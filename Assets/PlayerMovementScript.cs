@@ -23,9 +23,8 @@ public class PlayerMovementScript : MonoBehaviour
 	void Update()
 	{
 		Wrapper.transform.Rotate(0, Input.GetAxis("Mouse X")* RotSpeed, 0);
-		//Camera.main.transform.Rotate(-Input.GetAxis("Mouse Y")* RotSpeed, 0, 0);
+//		Camera.main.transform.Rotate(-Input.GetAxis("Mouse Y")* RotSpeed, 0, 0);
 
-		//
 
 		Vector3 Dir = Vector3.zero;
 		if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
