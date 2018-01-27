@@ -9,6 +9,7 @@ public class PlayerMovementScript : MonoBehaviour
 	private GameObject Wrapper;
 	private float MoveSpeed = 0.3f;
 	private float RotSpeed = 5f;
+	private float Yview = 0.0f;
 
 	// Use this for initialization
 	void Start()
@@ -23,7 +24,21 @@ public class PlayerMovementScript : MonoBehaviour
 	void Update()
 	{
 		Wrapper.transform.Rotate(0, Input.GetAxis("Mouse X")* RotSpeed, 0);
-//		Camera.main.transform.Rotate(-Input.GetAxis("Mouse Y")* RotSpeed, 0, 0);
+		float ModifyY = -Input.GetAxis("Mouse Y")*RotSpeed;
+		Yview += ModifyY;
+		if(Yview > 90)
+		{
+			ModifyY -= Yview - 90;
+			Yview = 90f;
+		}
+		if(Yview < -90)
+		{
+			ModifyY -= Yview + 90;
+			Yview = -90f; 
+		}
+
+		print(Yview+"->"+ ModifyY);
+		Camera.main.transform.Rotate(ModifyY, 0, 0);
 
 
 		Vector3 Dir = Vector3.zero;
@@ -43,6 +58,9 @@ public class PlayerMovementScript : MonoBehaviour
 		{
 			Dir.x += MoveSpeed;
 		}
+
+		//
+
 		Vector3 MoveVector = Vector3.ClampMagnitude(Dir, MoveSpeed);
 		Controller.Move(Wrapper.transform.rotation * MoveVector);
 	}
