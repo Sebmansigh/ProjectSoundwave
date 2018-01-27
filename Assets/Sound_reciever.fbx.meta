@@ -10,24 +10,39 @@ ModelImporter:
     100004: Plane
     100006: //RootNode
     100008: Torus
+    100010: base
+    100012: cage
+    100014: foam
     400000: BezierCircle
     400002: Cube
     400004: Plane
     400006: //RootNode
     400008: Torus
+    400010: base
+    400012: cage
+    400014: foam
     2100000: No Name
     2300000: BezierCircle
     2300002: Cube
     2300004: Plane
     2300006: Torus
+    2300008: base
+    2300010: cage
+    2300012: foam
     3300000: BezierCircle
     3300002: Cube
     3300004: Plane
     3300006: Torus
+    3300008: base
+    3300010: cage
+    3300012: foam
     4300000: Cube
     4300002: BezierCircle
     4300004: Plane
     4300006: Torus
+    4300008: foam
+    4300010: cage
+    4300012: base
   externalObjects: {}
   materials:
     importMaterials: 1
