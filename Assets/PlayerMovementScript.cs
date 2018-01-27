@@ -25,6 +25,21 @@ public class PlayerMovementScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		HandleMovement();
+		HandleAimShoot();
+	}
+
+	private void HandleAimShoot()
+	{
+		if(Input.GetMouseButtonDown(0))
+		{
+			Vector3 ProjectileVelocity = Camera.main.transform.rotation * (Wrapper.transform.rotation * Vector3.forward) / 4;
+			Projectile.CreateProjectile(GameObject.Find("WaveSpawner").transform.position, ProjectileVelocity);
+		}
+	}
+
+	private void HandleMovement()
+	{
 		Wrapper.transform.Rotate(0, Input.GetAxis("Mouse X")* RotSpeed, 0);
 		float ModifyY = -Input.GetAxis("Mouse Y")*RotSpeed;
 		Yview += ModifyY;
