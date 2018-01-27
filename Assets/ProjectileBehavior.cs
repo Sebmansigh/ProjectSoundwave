@@ -21,15 +21,20 @@ public sealed class Projectile
 	private Projectile()
 	{}
 
-	public static GameObject CreateProjectile(Vector3 position, Vector3 velocity)
+	public static GameObject CreateProjectile(Vector3 position, Quaternion rotation, Vector3 velocity)
 	{
+		GameObject projectile = GameObject.Instantiate(GameObject.Find("SoundSphere"));
+		projectile.transform.position = position;
+		projectile.transform.rotation = rotation;
+		projectile.GetComponent<ProjectileBehavior>().Velocity = velocity;
+		/*
 		GameObject projectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
 		projectile.transform.position = position;
 
 		ProjectileBehavior b = projectile.AddComponent<ProjectileBehavior>();
 		b.Velocity = velocity;
-
+		*/
 		return projectile;
 	}
 }
