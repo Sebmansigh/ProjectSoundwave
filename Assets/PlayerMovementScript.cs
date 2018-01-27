@@ -14,7 +14,7 @@ public class PlayerMovementScript : MonoBehaviour
 	private float Yvelocity = 0.0f;
 
 	// Use this for initialization
-	void Start()
+	void Start() 
 	{
 		Wrapper = GameObject.Find("PlayerWrapper");
 		Controller = (CharacterController)GetComponent(typeof(CharacterController));

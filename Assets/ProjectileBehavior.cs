@@ -5,14 +5,25 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
 	public Vector3 Velocity { get; set; }
+	private CharacterController Controller;
+
+	void OnTriggerEnter(Collider other)
+	{
+		if(other is MeshCollider)
+		{
+			Destroy(gameObject);
+		}
+	} 
 
 	void Start()
 	{
+		Controller = GetComponent<CharacterController>();
 	}
 
 	void Update()
 	{
-		transform.position += Velocity;
+		//transform.position += Velocity;
+		Controller.Move(Velocity);
 	}
 }
 
