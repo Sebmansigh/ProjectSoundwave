@@ -1,48 +1,27 @@
 fileFormatVersion: 2
-guid: 23b4e83ca19524a6393fca6c61f3a56d
-timeCreated: 1517017425
+guid: 5c357aa7f6ea3364292e844b2d863beb
+timeCreated: 1517084650
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: BezierCircle
-    100002: Cube
-    100004: Plane
-    100006: //RootNode
-    100008: Torus
-    100010: base
-    100012: cage
-    100014: foam
-    400000: BezierCircle
-    400002: Cube
-    400004: Plane
-    400006: //RootNode
-    400008: Torus
-    400010: base
-    400012: cage
-    400014: foam
-    2100000: No Name
-    2300000: BezierCircle
-    2300002: Cube
-    2300004: Plane
-    2300006: Torus
-    2300008: base
-    2300010: cage
-    2300012: foam
-    3300000: BezierCircle
-    3300002: Cube
-    3300004: Plane
-    3300006: Torus
-    3300008: base
-    3300010: cage
-    3300012: foam
-    4300000: Cube
-    4300002: BezierCircle
-    4300004: Plane
-    4300006: Torus
-    4300008: foam
-    4300010: cage
-    4300012: base
+    100000: //RootNode
+    100002: polySurface3
+    100004: polySurface3.001
+    400000: //RootNode
+    400002: polySurface3
+    400004: polySurface3.001
+    2100000: lambert6
+    2100002: lambert1
+    2300000: //RootNode
+    2300002: polySurface3
+    2300004: polySurface3.001
+    3300000: //RootNode
+    3300002: polySurface3
+    3300004: polySurface3.001
+    4300000: polySurface3
+    4300002: polySurface3.001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -117,7 +96,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
