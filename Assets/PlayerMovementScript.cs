@@ -37,7 +37,6 @@ public class PlayerMovementScript : MonoBehaviour
 			Yview = -90f; 
 		}
 
-		print(Yview+"->"+ ModifyY);
 		Camera.main.transform.Rotate(ModifyY, 0, 0);
 
 
