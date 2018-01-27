@@ -5,25 +5,32 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
 	public Vector3 Velocity { get; set; }
-	private CharacterController Controller;
+	private Rigidbody Body;
 
 	void OnTriggerEnter(Collider other)
 	{
 		if(other is MeshCollider)
 		{
 			Destroy(gameObject);
+			return;
+		}
+		if(other.gameObject.name.StartsWith("SoundReciever"))
+		{
+			Destroy(gameObject);
+			other.gameObject.SendMessage("OnSoundTrigger");
+			return;
 		}
 	} 
 
 	void Start()
 	{
-		Controller = GetComponent<CharacterController>();
+		Body = GetComponent<Rigidbody>();
 	}
 
 	void Update()
 	{
 		//transform.position += Velocity;
-		Controller.Move(Velocity);
+		Body.velocity = Velocity;
 	}
 }
 
@@ -38,14 +45,6 @@ public sealed class Projectile
 		projectile.transform.position = position;
 		projectile.transform.rotation = rotation;
 		projectile.GetComponent<ProjectileBehavior>().Velocity = velocity;
-		/*
-		GameObject projectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-
-		projectile.transform.position = position;
-
-		ProjectileBehavior b = projectile.AddComponent<ProjectileBehavior>();
-		b.Velocity = velocity;
-		*/
 		return projectile;
 	}
 }

@@ -33,7 +33,7 @@ public class PlayerMovementScript : MonoBehaviour
 	{
 		if(Input.GetMouseButtonDown(0))
 		{
-			Vector3 ProjectileVelocity = Camera.main.transform.rotation * (Vector3.forward);
+			Vector3 ProjectileVelocity = 32 * (Camera.main.transform.rotation * Vector3.forward);
 			GameObject Gun = GameObject.Find("WaveSpawner");
 			Projectile.CreateProjectile(Gun.transform.position, Quaternion.identity, ProjectileVelocity);
 		}
@@ -80,7 +80,7 @@ public class PlayerMovementScript : MonoBehaviour
 		if(Controller.isGrounded)
 		{
 			Yvelocity = 0.0f;
-			if(Input.GetKeyDown(KeyCode.Space))
+			if(Input.GetKey(KeyCode.Space))
 			{
 				Yvelocity = 0.5f;
 			}
