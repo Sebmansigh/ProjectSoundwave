@@ -10,6 +10,8 @@ public class PlayerMovementScript : MonoBehaviour
 	private float MoveSpeed = 0.3f;
 	private float RotSpeed = 5f;
 	private float Yview = 0.0f;
+	private const float GRAVITY = -1.0f;
+	private float Yvelocity = 0.0f;
 
 	// Use this for initialization
 	void Start()
@@ -59,8 +61,22 @@ public class PlayerMovementScript : MonoBehaviour
 		}
 
 		//
+		if(Controller.isGrounded)
+		{
+			Yvelocity = 0.0f;
+			if(Input.GetKeyDown(KeyCode.Space))
+			{
+				Yvelocity = 0.5f;
+			}
+		}
+		else
+		{
+			Yvelocity += GRAVITY / 60;
+		}
 
-		Vector3 MoveVector = Vector3.ClampMagnitude(Dir, MoveSpeed);
-		Controller.Move(Wrapper.transform.rotation * MoveVector);
+		Vector3 MoveVector = Wrapper.transform.rotation * Vector3.ClampMagnitude(Dir, MoveSpeed);
+		MoveVector += new Vector3(0, Yvelocity, 0);
+
+		Controller.Move(MoveVector);
 	}
 }
