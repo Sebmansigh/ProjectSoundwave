@@ -33,4 +33,9 @@ public class DoorTrigger : MonoBehaviour
 			triggered = true;
 		}
 	}
+
+	void OnTriggerEnter()
+	{
+		OnSoundTrigger();
+	}
 }
