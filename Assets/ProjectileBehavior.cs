@@ -14,11 +14,15 @@ public class ProjectileBehavior : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
-		if(other.gameObject.name.StartsWith("SoundReciever"))
+		else if(other.gameObject.name.StartsWith("SoundReciever"))
 		{
 			Destroy(gameObject);
 			other.gameObject.SendMessage("OnSoundTrigger");
 			return;
+		}
+		else if(other.gameObject.GetComponent<MeshRenderer>().material.name.StartsWith("mirror"))
+		{
+			print("BOOP!");
 		}
 	} 
 
@@ -31,6 +35,11 @@ public class ProjectileBehavior : MonoBehaviour
 	{
 		//transform.position += Velocity;
 		Body.velocity = Velocity;
+
+		if(Mathf.Abs(gameObject.transform.position.y) > 100)
+		{
+			Destroy(gameObject);
+		}
 	}
 }
 

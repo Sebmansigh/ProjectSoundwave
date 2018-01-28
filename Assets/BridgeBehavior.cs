@@ -20,6 +20,7 @@ public class BridgeBehavior : MonoBehaviour
 			{
 				GetComponent<Rigidbody>().velocity = Vector3.zero;
 				print("Donezo!");
+				Destroy(this); //Yes, removing this script component is the desired behavior.
 			}
 			else
 			{
