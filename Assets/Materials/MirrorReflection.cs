@@ -8,8 +8,8 @@ using System.Collections;
 public class MirrorReflection : MonoBehaviour
 {
 	public bool m_DisablePixelLights = true;
-	public int m_TextureWidth = 2048;
-	public int m_TextureHeight = 1024;
+	public int m_TextureWidth = 1024;
+	public int m_TextureHeight = 512;
 	public float m_ClipPlaneOffset = 0.07f;
 
 	public LayerMask m_ReflectLayers = -1;
@@ -72,7 +72,7 @@ public class MirrorReflection : MonoBehaviour
 		Matrix4x4 projection = cam.CalculateObliqueMatrix(clipPlane);
 		reflectionCamera.projectionMatrix = projection;
 
-		reflectionCamera.cullingMask = ~(1<<4) & m_ReflectLayers.value; // never render water layer
+		reflectionCamera.cullingMask = -1;//~(1<<4) & m_ReflectLayers.value; // never render water layer
 		reflectionCamera.targetTexture = m_ReflectionTexture;
 		GL.SetRevertBackfacing (true);
 		reflectionCamera.transform.position = newpos;
