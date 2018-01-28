@@ -72,7 +72,7 @@ public class MirrorReflection : MonoBehaviour
 		Matrix4x4 projection = cam.CalculateObliqueMatrix(clipPlane);
 		reflectionCamera.projectionMatrix = projection;
 
-		reflectionCamera.cullingMask = -1;//~(1<<4) & m_ReflectLayers.value; // never render water layer
+		reflectionCamera.cullingMask = ~(1<<4) & m_ReflectLayers.value; // never render water layer
 		reflectionCamera.targetTexture = m_ReflectionTexture;
 		GL.SetRevertBackfacing (true);
 		reflectionCamera.transform.position = newpos;
