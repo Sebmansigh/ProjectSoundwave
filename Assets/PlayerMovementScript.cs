@@ -37,7 +37,8 @@ public class PlayerMovementScript : MonoBehaviour
 		{
 			Vector3 ProjectileVelocity = 32 * (Camera.main.transform.rotation * Vector3.forward);
 			GameObject Gun = GameObject.Find("WaveSpawner");
-			Projectile.CreateProjectile(Gun.transform.position, Quaternion.identity, ProjectileVelocity);
+			Projectile.CreateProjectile(Gun.transform.position, Camera.main.transform.rotation, ProjectileVelocity);
+			//print (Wrapper.transform.rotation + " " + Camera.main.transform.rotation);
 		}
 	}
 

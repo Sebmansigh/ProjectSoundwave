@@ -82,7 +82,7 @@ public sealed class Projectile
 	{
 		GameObject projectile = GameObject.Instantiate(GameObject.Find("SoundSphere"));
 		projectile.transform.position = position;
-		projectile.transform.rotation = rotation;
+		projectile.transform.rotation *= rotation;
 		projectile.GetComponent<ProjectileBehavior>().Velocity = velocity;
 		return projectile;
 	}
