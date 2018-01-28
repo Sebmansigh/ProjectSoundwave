@@ -12,8 +12,8 @@ public class DoorTrigger : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Vector3 Left = m_DoorRight.GetComponent<Rigidbody>().position - m_DoorLeft.GetComponent<Rigidbody>().position;
-		print(m_DoorRight.GetComponent<Rigidbody>().position + " - " + m_DoorLeft.GetComponent<Rigidbody>().position);
+		Vector3 Left =  m_DoorLeft.GetComponent<Rigidbody>().position - m_DoorRight.GetComponent<Rigidbody>().position;
+		//print(m_DoorRight.GetComponent<Rigidbody>().position + " - " + m_DoorLeft.GetComponent<Rigidbody>().position);
 		m_DoorLeft.AddComponent<LeftDoorBehavior>().Left = Left;
 		m_DoorRight.AddComponent<RightDoorBehavior>().Left = Left;
 	}
