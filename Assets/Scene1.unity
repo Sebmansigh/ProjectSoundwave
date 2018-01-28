@@ -3073,11 +3073,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 8d7d709545c9e46539a5b29e6052f6cf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000057601163
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 8d7d709545c9e46539a5b29e6052f6cf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000057601163
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 8d7d709545c9e46539a5b29e6052f6cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3110,6 +3110,10 @@ Prefab:
     - target: {fileID: 100006, guid: 8d7d709545c9e46539a5b29e6052f6cf, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 8d7d709545c9e46539a5b29e6052f6cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d7d709545c9e46539a5b29e6052f6cf, type: 3}

@@ -12,6 +12,7 @@ public class PlayerMovementScript : MonoBehaviour
 	private float Yview = 0.0f;
 	private const float GRAVITY = -1.0f;
 	private float Yvelocity = 0.0f;
+	private Vector3 InitialPosition;
 
 	// Use this for initialization
 	void Start() 
@@ -20,6 +21,7 @@ public class PlayerMovementScript : MonoBehaviour
 		Controller = (CharacterController)GetComponent(typeof(CharacterController));
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
+		InitialPosition = transform.position;
 	}
 
 	// Update is called once per frame
@@ -94,5 +96,11 @@ public class PlayerMovementScript : MonoBehaviour
 		MoveVector += new Vector3(0, Yvelocity, 0);
 
 		Controller.Move(MoveVector);
+
+		//
+		if(transform.position.y < -15)
+		{
+			transform.position = InitialPosition;
+		}
 	}
 }
