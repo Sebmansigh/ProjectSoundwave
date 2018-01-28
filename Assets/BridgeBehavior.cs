@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BridgeBehavior : MonoBehaviour
 {
-	private int ticks;
+	private bool Triggered = false;
 
 	// Use this for initialization
 	void Start ()
@@ -14,11 +14,17 @@ public class BridgeBehavior : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(! GetComponent<Rigidbody>().velocity.Equals(Vector3.zero) )
+		if(Triggered)
 		{
 			if(GetComponent<Rigidbody>().position.z >= -30)
 			{
 				GetComponent<Rigidbody>().velocity = Vector3.zero;
+				print("Donezo!");
+			}
+			else
+			{
+				//GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 5.0f);
+				GetComponent<Rigidbody>().position += new Vector3(0.0f, 0.0f, 0.25f);
 			}
 		}
 	}
@@ -26,6 +32,6 @@ public class BridgeBehavior : MonoBehaviour
 	void SoundActivate ()
 	{
 		print("ACTIVATED!");
-		GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 5.0f);
+		Triggered = true;
 	}
 }
