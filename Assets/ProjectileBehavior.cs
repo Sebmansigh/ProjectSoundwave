@@ -2,11 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ProjectileBehavior : MonoBehaviour
 {
 	public Vector3 Velocity { get; set; }
 	private Rigidbody Body;
 	private HashSet<GameObject> IgnoredMirrors;
+
+	public static bool IsMirror(GameObject O)
+	{
+		try
+		{
+			return O.GetComponent<MeshRenderer>().material.name.StartsWith("mirror");
+		}
+		catch
+		{
+			return false;
+		}
+	}
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -21,7 +34,7 @@ public class ProjectileBehavior : MonoBehaviour
 			other.gameObject.SendMessage("OnSoundTrigger");
 			return;
 		}
-		else if(other.gameObject.GetComponent<MeshRenderer>().material.name.StartsWith("mirror"))
+		else if(IsMirror(other.gameObject))
 		{
 			GameObject Mirror = other.gameObject;
 			if(!IgnoredMirrors.Contains(Mirror))
@@ -40,7 +53,6 @@ public class ProjectileBehavior : MonoBehaviour
 	void Bounce(GameObject Mirror)
 	{
 		Velocity = Vector3.Reflect(Velocity,Mirror.transform.up);
-		print("BOOP");
 	}
 
 	void Start()
