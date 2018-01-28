@@ -22,20 +22,19 @@ public class LeftDoorBehavior : MonoBehaviour
 	{
 		if(Triggered)
 		{
-			if(AmtTraveled > 7)
+			if(AmtTraveled > 8)
 			{
 				//GetComponent<Rigidbody>().velocity = Vector3.zero;
 				//Destroy(this); //Yes, removing this script component is the desired behavior.
 				Triggered = false;
-				print("click!");
+				GetComponent<BoxCollider>().enabled = false;
+				GetComponent<MeshRenderer>().enabled = false;
 			}
 			else
 			{
 				//GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 5.0f);
-				transform.position += Left * 0.1f;
-				AmtTraveled += Left.magnitude * 0.1f;
-				//print(InitialPosition.z - transform.position.z);
-				print(Left + " ->" + AmtTraveled);
+				transform.position += Left * 0.025f;
+				AmtTraveled += Left.magnitude * 0.025f;
 			}
 		}
 	}

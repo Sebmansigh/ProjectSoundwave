@@ -25,14 +25,12 @@ public class BendBehavior : MonoBehaviour
 			{
 				//GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 5.0f);
 				transform.Rotate(0.0f, 0.0f, 1.0f);
-				print(transform.rotation.eulerAngles);
 			}
 		}
 	}
 
 	void SoundActivate ()
 	{
-		print("TRIGGERED");
 		Triggered = true;
 	}
 }
