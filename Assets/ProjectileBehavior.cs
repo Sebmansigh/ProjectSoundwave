@@ -6,6 +6,7 @@ public class ProjectileBehavior : MonoBehaviour
 {
 	public Vector3 Velocity { get; set; }
 	private Rigidbody Body;
+	private HashSet<GameObject> IgnoredMirrors;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -22,13 +23,30 @@ public class ProjectileBehavior : MonoBehaviour
 		}
 		else if(other.gameObject.GetComponent<MeshRenderer>().material.name.StartsWith("mirror"))
 		{
-			print("BOOP!");
+			GameObject Mirror = other.gameObject;
+			if(!IgnoredMirrors.Contains(Mirror))
+			{
+				Bounce(Mirror);
+				IgnoredMirrors.Add(Mirror);
+			}
 		}
-	} 
+	}
+
+	void OnTriggerLeave(Collider other)
+	{
+		IgnoredMirrors.Remove(other.gameObject);
+	}
+
+	void Bounce(GameObject Mirror)
+	{
+		Velocity = Vector3.Reflect(Velocity,Mirror.transform.up);
+		print("BOOP");
+	}
 
 	void Start()
 	{
 		Body = GetComponent<Rigidbody>();
+		IgnoredMirrors = new HashSet<GameObject>();
 	}
 
 	void Update()
