@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelEndTrigger : MonoBehaviour {
+public class LevelEndTrigger : Trigger {
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +14,8 @@ public class LevelEndTrigger : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter()
+	public override void OnTrigger(Device sender)
 	{
 		GameObject.Find("LevelEndText").GetComponent<MeshRenderer>().enabled = true;
-		Destroy(this);
 	}
 }
