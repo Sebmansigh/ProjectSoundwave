@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
 	public Vector3 Velocity { get; set; }
-	private Rigidbody Body;
+	//private Rigidbody Body;
 	private HashSet<GameObject> IgnoredMirrors;
 
 	public static bool IsMirror(GameObject O)
@@ -23,25 +23,39 @@ public class ProjectileBehavior : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other is MeshCollider)
+		//print("Hit object: " + other.gameObject.name);
+
+		if(other.gameObject.GetComponent<SoundReceiverDevice>() != null)
 		{
-			Destroy(gameObject);
-			return;
-		}
-		else if(other.gameObject.GetComponent<SoundReceiverDevice>() != null)
-		{
+			//print("Case: Receiver");
 			Destroy(gameObject);
 			other.gameObject.GetComponent<SoundReceiverDevice>().Fire();
-			return;
 		}
 		else if(IsMirror(other.gameObject))
 		{
+			//print("Case: IsMirror");
 			GameObject Mirror = other.gameObject;
 			if(!IgnoredMirrors.Contains(Mirror))
 			{
 				Bounce(Mirror);
 				IgnoredMirrors.Add(Mirror);
 			}
+		}
+		else if(other.GetComponent<BarsBehavior>() != null) // Behaves like a bars GameObject
+		{
+			//print("Case: IsBars");
+			//Do nothing
+		}
+		else
+		{
+			//print("Case: IsWall");
+			GameObject dummy = new GameObject();
+			dummy.transform.position = this.transform.position;
+			AudioSource s = dummy.AddComponent<AudioSource>();
+			s.clip = this.GetComponent<AudioSource>().clip;
+			s.Play();
+			Destroy(gameObject);
+			Destroy(dummy, s.clip.length);
 		}
 	}
 
@@ -57,14 +71,14 @@ public class ProjectileBehavior : MonoBehaviour
 
 	void Start()
 	{
-		Body = GetComponent<Rigidbody>();
+		//Body = GetComponent<Rigidbody>();
 		IgnoredMirrors = new HashSet<GameObject>();
 	}
 
 	void Update()
 	{
-		//transform.position += Velocity;
-		Body.velocity = Velocity;
+		transform.position += Velocity;
+		//Body.velocity = Velocity;
 
 		if(Mathf.Abs(gameObject.transform.position.y) > 100)
 		{
@@ -84,6 +98,7 @@ public sealed class Projectile
 		projectile.transform.position = position;
 		projectile.transform.rotation *= rotation;
 		projectile.GetComponent<ProjectileBehavior>().Velocity = velocity;
+
 		return projectile;
 	}
 }

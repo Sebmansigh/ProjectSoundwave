@@ -35,7 +35,7 @@ public class PlayerMovementScript : MonoBehaviour
 	{
 		if(Input.GetMouseButtonDown(0))
 		{
-			Vector3 ProjectileVelocity = 32 * (Camera.main.transform.rotation * Vector3.forward);
+			Vector3 ProjectileVelocity = (Camera.main.transform.rotation * Vector3.forward)/3;
 			GameObject Gun = GameObject.Find("WaveSpawner");
 			Projectile.CreateProjectile(Gun.transform.position, Camera.main.transform.rotation, ProjectileVelocity);
 			Gun.GetComponent<AudioSource>().Play();
@@ -108,7 +108,6 @@ public class PlayerMovementScript : MonoBehaviour
 
 	void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-		print("Hit object: " + hit.gameObject.name);
 		if(hit.gameObject.GetComponent<PressurePlateDevice>() != null)
 		{
 			hit.gameObject.GetComponent<PressurePlateDevice>().Press();
