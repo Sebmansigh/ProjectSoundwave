@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BridgeTrigger : MonoBehaviour {
+public class BridgeTrigger : Trigger {
 
-	GameObject Bridge;
+	public GameObject m_Bridge;
 	bool triggered = false;
 
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
-		Bridge = GameObject.Find("Bridge");
+		Register(m_Bridge.AddComponent<BridgeBehavior>());
 	}
 	
 	// Update is called once per frame
@@ -19,11 +19,11 @@ public class BridgeTrigger : MonoBehaviour {
 		
 	}
 
-	void OnSoundTrigger () 
+	public override void OnTrigger(Device sender) 
 	{
 		if(!triggered)
 		{
-			Bridge.SendMessage("SoundActivate");
+			ActivateAll();
 			triggered = true;
 		}
 	}

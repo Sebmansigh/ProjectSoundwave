@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BridgeBehavior : MonoBehaviour
+public class BridgeBehavior : Behavior
 {
 	private bool Triggered = false;
 
@@ -29,7 +29,7 @@ public class BridgeBehavior : MonoBehaviour
 		}
 	}
 
-	void SoundActivate ()
+	public override void Activate ()
 	{
 		Triggered = true;
 	}

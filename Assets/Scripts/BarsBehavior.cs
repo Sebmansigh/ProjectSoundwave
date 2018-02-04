@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarsBehavior : MonoBehaviour
+public class BarsBehavior : Behavior
 {
 	private bool Triggered = false;
 
@@ -29,7 +29,7 @@ public class BarsBehavior : MonoBehaviour
 		}
 	}
 
-	void SoundActivate ()
+	public override void Activate()
 	{
 		Triggered = true;
 	}

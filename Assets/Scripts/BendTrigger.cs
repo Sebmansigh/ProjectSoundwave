@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BendTrigger : MonoBehaviour {
+public class BendTrigger : Trigger {
 
-	GameObject Bend;
+	public GameObject m_Bend;
 	bool triggered = false;
 
 	// Use this for initialization
 	void Start ()
 	{
-		Bend = GameObject.Find("Bend");
+		Register(m_Bend.AddComponent<BendBehavior>());
 	}
 
 	// Update is called once per frame
@@ -19,11 +19,11 @@ public class BendTrigger : MonoBehaviour {
 
 	}
 
-	void OnSoundTrigger () 
+	public override void OnTrigger(Device sender) 
 	{
 		if(!triggered)
 		{
-			Bend.SendMessage("SoundActivate");
+			ActivateAll();
 			triggered = true;
 		}
 	}

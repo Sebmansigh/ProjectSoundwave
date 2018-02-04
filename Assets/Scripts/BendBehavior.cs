@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BendBehavior : MonoBehaviour
+public class BendBehavior : Behavior
 {
 	private bool Triggered = false;
 
@@ -29,7 +29,7 @@ public class BendBehavior : MonoBehaviour
 		}
 	}
 
-	void SoundActivate ()
+	public override void Activate ()
 	{
 		Triggered = true;
 	}

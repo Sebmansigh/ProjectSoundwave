@@ -28,10 +28,10 @@ public class ProjectileBehavior : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
-		else if(other.gameObject.name.StartsWith("SoundReciever"))
+		else if(other.gameObject.GetComponent<SoundReceiverDevice>() != null)
 		{
 			Destroy(gameObject);
-			other.gameObject.SendMessage("OnSoundTrigger");
+			other.gameObject.GetComponent<SoundReceiverDevice>().Fire();
 			return;
 		}
 		else if(IsMirror(other.gameObject))
