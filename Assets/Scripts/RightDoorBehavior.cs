@@ -45,3 +45,4 @@ public class RightDoorBehavior : Behavior
 		Triggered = true;
 	}
 }
+ 

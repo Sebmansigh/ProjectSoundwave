@@ -6,6 +6,7 @@ public abstract class Trigger : MonoBehaviour
 	private HashSet<Behavior> Behaviors = new HashSet<Behavior>();
 
 	public abstract void OnTrigger(Device sender);
+
 	protected void Register(Behavior b)
 	{
 		Behaviors.Add(b);
@@ -20,3 +21,4 @@ public abstract class Trigger : MonoBehaviour
 	}
 }
 
+ 

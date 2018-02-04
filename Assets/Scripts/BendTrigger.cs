@@ -27,4 +27,4 @@ public class BendTrigger : Trigger {
 			triggered = true;
 		}
 	}
-}
+} 

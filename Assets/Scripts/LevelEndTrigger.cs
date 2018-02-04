@@ -19,3 +19,4 @@ public class LevelEndTrigger : Trigger {
 		GameObject.Find("LevelEndText").GetComponent<MeshRenderer>().enabled = true;
 	}
 }
+ 

@@ -33,4 +33,4 @@ public class BendBehavior : Behavior
 	{
 		Triggered = true;
 	}
-}
+} 

@@ -9,6 +9,9 @@ public abstract class Device : MonoBehaviour
 		{
 			c.OnTrigger(this);
 		}
+		GetComponent<AudioSource>().Play();
+		print("Fired by: " + name);
 	}
 }
 
+ 

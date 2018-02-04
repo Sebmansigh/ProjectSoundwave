@@ -18,7 +18,7 @@ public class PlayerMovementScript : MonoBehaviour
 	void Start() 
 	{
 		Wrapper = GameObject.Find("PlayerWrapper");
-		Controller = (CharacterController)GetComponent(typeof(CharacterController));
+		Controller = GetComponent<CharacterController>();
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		InitialPosition = transform.position;
@@ -38,6 +38,7 @@ public class PlayerMovementScript : MonoBehaviour
 			Vector3 ProjectileVelocity = 32 * (Camera.main.transform.rotation * Vector3.forward);
 			GameObject Gun = GameObject.Find("WaveSpawner");
 			Projectile.CreateProjectile(Gun.transform.position, Camera.main.transform.rotation, ProjectileVelocity);
+			Gun.GetComponent<AudioSource>().Play();
 			//print (Wrapper.transform.rotation + " " + Camera.main.transform.rotation);
 		}
 	}
@@ -104,4 +105,14 @@ public class PlayerMovementScript : MonoBehaviour
 			transform.position = InitialPosition;
 		}
 	}
+
+	void OnControllerColliderHit(ControllerColliderHit hit)
+	{
+		print("Hit object: " + hit.gameObject.name);
+		if(hit.gameObject.GetComponent<PressurePlateDevice>() != null)
+		{
+			hit.gameObject.GetComponent<PressurePlateDevice>().Press();
+		}
+	}
 }
+ 

@@ -33,4 +33,4 @@ public class BarsBehavior : Behavior
 	{
 		Triggered = true;
 	}
-}
+}  

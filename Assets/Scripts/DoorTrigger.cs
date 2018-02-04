@@ -36,3 +36,4 @@ public class DoorTrigger : Trigger
 		}
 	}
 }
+ 

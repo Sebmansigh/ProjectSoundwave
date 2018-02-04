@@ -24,3 +24,4 @@ public class Laser : MonoBehaviour {
 		else lr.SetPosition(1, transform.forward*5000);
 	}
 }
+ 

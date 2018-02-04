@@ -28,4 +28,4 @@ public class BarsTrigger : Trigger
 			triggered = true;
 		}
 	}
-}
+} 
