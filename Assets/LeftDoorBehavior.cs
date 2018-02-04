@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftDoorBehavior : MonoBehaviour
+public class LeftDoorBehavior : Behavior
 {
 	private bool Triggered = false;
 	private Vector3 InitialPosition;
@@ -39,7 +39,7 @@ public class LeftDoorBehavior : MonoBehaviour
 		}
 	}
 
-	void SoundActivate ()
+	public override void Activate ()
 	{
 		Triggered = true;
 	}

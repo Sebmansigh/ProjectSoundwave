@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarsTrigger : MonoBehaviour
+public class BarsTrigger : Trigger
 {
 	public GameObject m_Bars;
 
@@ -11,7 +11,7 @@ public class BarsTrigger : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		m_Bars.AddComponent<BarsBehavior>();
+		Register(m_Bars.AddComponent<BarsBehavior>());
 	}
 
 	// Update is called once per frame
@@ -20,11 +20,11 @@ public class BarsTrigger : MonoBehaviour
 
 	}
 
-	void OnSoundTrigger () 
+	public override void OnTrigger(Device sender) 
 	{
 		if(!triggered)
 		{
-			m_Bars.SendMessage("SoundActivate");
+			ActivateAll();
 			triggered = true;
 		}
 	}
